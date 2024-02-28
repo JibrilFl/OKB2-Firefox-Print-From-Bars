@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "CodePrintBars",
+  "description": "Print to Ib and full name",
+  "version": "0.1.2",
+  "icons": {
+    "64": "icons/icon.png"
+  },
+  "permissions": ["webRequest", "webRequestBlocking"],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://10.31.6.59/inst/*"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ]
+}
