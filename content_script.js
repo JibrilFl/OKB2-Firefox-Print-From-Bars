@@ -61,9 +61,11 @@ function dataGeneration() {
 				break;
 			case 'PAT_STATUS':
 				column.childNodes.forEach(item => {
-					if (item.tagName == 'A') {
-						fullName = item.innerText;
-					}
+					item.childNodes.forEach(inner => {
+						if (inner.tagName == 'A') {
+							fullName = inner.innerText;
+						}
+					})
 				})
 				break;
 			case 'PATIENT_BIRTHDATE':
@@ -100,21 +102,18 @@ function startPrint() {
 			createBtn(menu.querySelectorAll('table > tbody')[0]);
 			// Если кнопка создана то добавляем к ней события
 			if (document.querySelector('.testingBarsBtn')) {
-				console.log('create events');
 				document.querySelector('.testingBarsBtn').addEventListener('click', dataGeneration);
 				document.querySelector('.testingBarsBtn').addEventListener('mouseenter', (e) => {
 					if (e.target.classList.contains('testingBarsBtn')) {
 						e.target.classList.remove('item-base');
 						e.target.classList.add('item-active');
 					}
-					console.log('mouse enter');
 				});
 				document.querySelector('.testingBarsBtn').addEventListener('mouseleave', (e) => {
 					if (e.target.classList.contains('testingBarsBtn')) {
 						e.target.classList.add('item-base');
 						e.target.classList.remove('item-active');
 					}
-					console.log('mouse leave');
 				});
 			}
 			// Удаляем интервал
